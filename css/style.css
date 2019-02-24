@@ -59,14 +59,22 @@ a{
   font-weight: bold;
 }
 
+/* from SI339 responsive web page lecture */
 .skip {
   position: absolute;
-  left: -2000px;
+  padding:6px;
+	top:-40px;
+	left:0px;
+  background: white;
+	-webkit-transition: top 2s ease-out;
+    transition: top 2s ease-out;
+    z-index: 100;
 }
 
 .skip:focus {
-  position: relative;
+  position: absolute;
   left: 0px;
+  top:0px;
   border: 2px solid black;
 }
 
@@ -98,8 +106,7 @@ a{
 }
 
 #content h1{
-  text-align: center;
-  margin-bottom: 10px;
+  display: none;
 }
 
 .portfolio-container{
@@ -107,6 +114,7 @@ a{
   flex-wrap: wrap;
   justify-content: space-around;
   align-content: space-around;
+  padding-top: 1em;
 }
 
 .item{
@@ -120,7 +128,7 @@ a{
 figure{
   border-radius: 4px;
   margin: 5px;
-  background-color: #e3e1e3;
+  background-color: #f6f4f4;
   box-shadow: 0 2px 5px #666564;
 }
 
@@ -132,11 +140,13 @@ figure img{
 figcaption{
   padding: 5px;
   text-align: center;
+  color: #545258;
 }
 
 .proj-title{
   font-weight: bold;
   padding: .5em;
+  color: #000000;
 }
 
 footer{
@@ -205,6 +215,10 @@ footer{
   transform: translate(-50%, -50%);
 }
 
+.intro-container{
+  display: none;
+}
+
 
 @media only screen and (min-width: 700px){
   .navbar{
@@ -229,8 +243,72 @@ footer{
   .current{
     background-color: #2983d1;
   }
+
+  .content{
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-column-gap: 2em;
+  }
+
+  .intro-about p.info{
+    color: #545258
+  }
+
+  .intro-about p.name{
+    color: #000000;
+    font-weight: bold;
+  }
+
+  .intro-container{
+    display: block;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10em minmax(min-content, max-content) 2em;
+    grid-row-start: 1;
+    align-self: center;
+    grid-row-gap: 10px;
+    margin-left: 15px;
+    padding-top: 0px;
+    padding-bottom: 5px;
+  }
+
+  .intro-container img.self1{
+    grid-column-start: 1;
+    align-self: end;
+    border-radius: 4px;
+  }
+
+  .intro-container p{
+    grid-column: 1 / span 1;
+  }
+
+  .intro-container img.umsilogo{
+    grid-column-start: 1;
+    align-self: start;
+  }
+
+  .portfolio-container{
+    grid-row: 1 / span 3;
+  }
+
 }
 
-@media only screen and (min-width: 1200px){
+@media only screen and (min-width: 943px){
+  .intro-container{
+    grid-row: 1 / span 2;
+  }
+}
 
+/* from SI339 responsive web page lecture */
+@media (prefers-reduced-motion: reduce){
+  .skip{
+	padding:6px;
+	position: absolute;
+	top:-40px;
+	left:0px;
+    -moz-transition: none;
+    -webkit-transition: none;
+    transition: none;
+    z-index: 1;
+	}
 }
